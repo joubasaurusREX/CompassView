@@ -27,7 +27,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    background: #f5f5dc; /* Cream color */
+    background: white; /* Changed to white */
     padding: 1rem 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -42,10 +42,16 @@ nav {
     padding: 0 20px;
 }
 
-.logo h1 {
-    color: #333 !important; /* Dark text on cream background */
-    margin: 0;
-    font-size: 1.8rem;
+.logo {
+    margin-right: auto; /* Push logo to the left */
+    padding-right: 2rem; /* Add some spacing from nav links */
+}
+
+.logo-img {
+    height: 40px; /* Made smaller (was 60px) */
+    width: auto;
+    object-fit: contain;
+    max-width: 150px; /* Reduced max width */
 }
 
 .nav-links {
@@ -55,7 +61,7 @@ nav {
 }
 
 .nav-links a {
-    color: #333 !important; /* Dark text for readability on cream */
+    color: #333 !important; /* Dark text for readability on white */
     text-decoration: none;
     margin: 0 1rem;
     font-weight: 500;
@@ -63,7 +69,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #007bff !important; /* Blue hover color */
+    color: #879eab !important; /* Use your brand color for hover */
 }
 
 .cta-button {
@@ -77,7 +83,7 @@ nav {
 }
 
 .cta-button:hover {
-    background: #6d8a99 !important; /* Darker shade on hover (same as other buttons) */
+    background: #6d8a99 !important; /* Darker shade on hover */
     color: white !important;
     border: 2px solid #6d8a99;
 }
@@ -86,8 +92,9 @@ nav {
 .hero {
     position: relative;
     background: linear-gradient(rgba(135,158,171,0.8), rgba(135,158,171,0.8)), url('https://via.placeholder.com/1200x600?text=CompassView+Hero') center/cover;
-    height: 100vh;
-    min-height: 600px;
+    height: calc(100vh - 80px); /* Subtract nav height */
+    min-height: 520px; /* Reduced to account for nav */
+    margin-top: 80px; /* Push down below the fixed nav */
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -103,13 +110,15 @@ nav {
     width: 100%;
     height: 100%;
     z-index: 1;
+    overflow: hidden;
 }
 
 .hero-bg {
     width: 100%;
-    height: 100%;
+    height: 120%; /* Make image taller to allow cropping */
     object-fit: cover;
-    object-position: center;
+    object-position: center top; /* Position image at top */
+    transform: translateY(-10%); /* Move image up to crop bottom */
 }
 
 .hero-content {
@@ -187,21 +196,48 @@ nav {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     border-radius: 10px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
     border: 3px solid white;
+    display: block;
 }
 
 .gallery-item img:hover {
     transform: scale(1.05);
+}
+
+/* Responsive adjustments for gallery */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Location Section */
@@ -401,8 +437,9 @@ footer {
     }
     
     .hero {
-        height: 80vh;
-        min-height: 500px;
+        height: calc(80vh - 80px); /* Account for nav on mobile too */
+        min-height: 420px;
+        margin-top: 80px;
     }
     
     .hero-content h2 {
@@ -424,5 +461,14 @@ footer {
     
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .logo-img {
+        height: 35px; /* Even smaller on mobile */
+        max-width: 120px;
+    }
+    
+    .logo {
+        padding-right: 1rem;
     }
 }
