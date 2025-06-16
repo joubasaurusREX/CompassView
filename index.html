@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CompassView - Your Gateway to Nightsbridge</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Mapbox GL JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
     <header>
@@ -84,10 +87,7 @@
                         </ul>
                     </div>
                     <div class="map-placeholder">
-                        <div class="map-box">
-                            <p>Interactive Map Coming Soon</p>
-                            <small>Detailed directions to Nightsbridge</small>
-                        </div>
+                        <div id="map" class="map-container"></div>
                     </div>
                 </div>
             </div>
