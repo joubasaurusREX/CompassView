@@ -1,9 +1,7 @@
 // Function to redirect to Nightsbridge
 function redirectToNightsbridge() {
-    // Replace with the actual Nightsbridge URL
-    const nightsbridgeUrl = "https://nightsbridge.com"; // Update this URL
+    const nightsbridgeUrl = "https://nightsbridge.com";
     
-    // Optional: Show confirmation before redirect
     if (confirm("You will be redirected to Nightsbridge. Continue?")) {
         window.open(nightsbridgeUrl, '_blank');
     }
@@ -15,11 +13,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Account for fixed nav height
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
+    });
+});
+
+// Prevent zoom on double tap for iOS
+document.addEventListener('touchend', function (event) {
+    var now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+var lastTouchEnd = 0;
+
+// Optimize images for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
     });
 });
 
