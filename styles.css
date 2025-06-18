@@ -519,7 +519,7 @@ footer {
     }
 }
 
-/* Add these styles at the end of your existing CSS */
+/* Add these styles to your existing CSS */
 
 /* Mapbox Map Styling */
 .map-placeholder {
@@ -540,11 +540,17 @@ footer {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding: 0;
 }
 
 .mapboxgl-popup-content h3 {
     color: #879eab;
     margin-bottom: 0.5rem;
+}
+
+/* Make marker clickable cursor */
+.mapboxgl-marker {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

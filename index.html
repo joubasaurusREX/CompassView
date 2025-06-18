@@ -3,41 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CompassView - Your Gateway to Nightsbridge</title>
+    <title>CompassView Guesthouse - Nieu-Bethesda Accommodation</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Mapbox GL JS -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav">
-                <div class="logo">
-                    <img src="images/Screenshot 2025-06-16 121318.png" alt="CompassView Logo" class="logo-img">
-                </div>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#location">Location</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#info">More Info</a>
-                    <a href="#redirect" class="cta-button">Book Now</a>
-                </div>
+    <nav>
+        <div class="nav">
+            <div class="logo">
+                <img src="images/Screenshot 2025-06-16 121318.png" alt="CompassView Logo" class="logo-img">
             </div>
-        </nav>
-    </header>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#location">Location</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#info">More Info</a>
+                <a href="javascript:void(0)" onclick="redirectToNightsbridge()" class="cta-button">Book Now</a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section class="hero">
             <div class="hero-image">
-                <img src="images/Screenshot 2025-06-16 114142.png" alt="CompassView - Scenic Gateway to Nightsbridge" class="hero-bg">
+                <img src="images/Screenshot 2025-06-16 114142.png" alt="CompassView Guesthouse" class="hero-bg">
             </div>
         </section>
 
         <section id="about" class="about">
             <div class="container">
-                <h2>About CompassView</h2>
-                <p>CompassView offers breathtaking panoramic views and serves as the perfect starting point for your journey to Nightsbridge. Experience the natural beauty and tranquil atmosphere that makes this location truly special.</p>
+                <h2>About CompassView Guesthouse</h2>
+                <p>Welcome to CompassView Guesthouse, your comfortable home away from home in the charming Karoo town of Nieu-Bethesda, South Africa. Our guesthouse offers quality accommodation with stunning views and warm hospitality, making it the perfect base to explore this historic town and its famous Owl House.</p>
             </div>
         </section>
 
@@ -75,15 +70,16 @@
 
         <section id="location" class="location">
             <div class="container">
-                <h2>Location & Directions</h2>
+                <h2>Our Location</h2>
                 <div class="location-content">
                     <div class="location-info">
-                        <h3>Find Us</h3>
-                        <p>CompassView is strategically located to provide the best vantage point of the Nightsbridge area.</p>
+                        <h3>Discover Nieu-Bethesda</h3>
+                        <p>CompassView Guesthouse is perfectly located in the heart of Nieu-Bethesda, a picturesque Karoo town famous for its artistic heritage and the renowned Owl House.</p>
                         <ul>
-                            <li>Easy access from main highways</li>
-                            <li>Parking available</li>
-                            <li>Walking distance to Nightsbridge</li>
+                            <li>Walking distance to the famous Owl House</li>
+                            <li>Close to local restaurants and galleries</li>
+                            <li>Perfect for stargazing in the clear Karoo skies</li>
+                            <li>Ideal base for exploring the Great Karoo</li>
                         </ul>
                     </div>
                     <div class="map-placeholder">
@@ -95,34 +91,35 @@
 
         <section id="info" class="more-info">
             <div class="container">
-                <h2>More Information</h2>
+                <h2>Guest Information</h2>
                 <div class="info-content">
                     <div class="brochure-section">
-                        <h3>📄 E-Brochure</h3>
-                        <p>Download our comprehensive e-brochure for detailed information about CompassView and the surrounding Nightsbridge area.</p>
-                        <a href="Compass View_E-Brochure_2023.pdf" download="CompassView_E-Brochure_2023.pdf" class="download-button">
-                            <span class="download-icon">⬇</span>
-                            Download E-Brochure (PDF)
+                        <h3>Accommodation Details</h3>
+                        <p>Download our comprehensive guide to learn more about our rooms, amenities, and what makes CompassView Guesthouse special.</p>
+                        <a href="Compass View_E-Brochure_2023 (1).pdf" download="CompassView-Guesthouse-Brochure.pdf" class="download-button">
+                            <span>📄</span>
+                            Download Brochure
                         </a>
-                        <small class="file-info">PDF • 3.4 MB • Updated 2023</small>
                     </div>
                     <div class="contact-section">
-                        <h3>📞 Contact Information</h3>
-                        <p>Have questions? Get in touch with us for more details about visiting CompassView.</p>
+                        <h3>Contact Information</h3>
+                        <p>Get in touch with us directly for any questions about your stay or special requests.</p>
                         <div class="contact-details">
-                            <p><strong>Email:</strong> Compassviewnb@gmail.com</p>
-                            <p><strong>Phone:</strong> +27 0836575425</p>
-                            <p><strong>Hours:</strong> Daily 8:00 AM - 6:00 PM</p>
+                            <p><strong>Phone:</strong> +27 083 657 5425</p>
+                            <p><strong>Email:</strong> info@compassview.co.za</p>
+                            <p><strong>Address:</strong> 4 New Street, Nieu-Bethesda, 6286</p>
+                            <p><strong>Check-in:</strong> 2:00 PM</p>
+                            <p><strong>Check-out:</strong> 10:00 AM</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="redirect-section">
+        <section id="redirect" class="redirect-section">
             <div class="container">
-                <h2>Ready to Visit Nightsbridge?</h2>
-                <p>Click below to be redirected to the official Nightsbridge website</p>
+                <h2>Ready to Book Your Stay?</h2>
+                <p>Use our secure online booking platform to check availability and make your reservation at CompassView Guesthouse</p>
                 <button onclick="redirectToNightsbridge()" class="redirect-button">Book Now</button>
             </div>
         </section>
@@ -130,7 +127,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 CompassView. Your gateway to Nightsbridge.</p>
+            <p>&copy; 2025 CompassView Guesthouse, Nieu-Bethesda. All rights reserved.</p>
         </div>
     </footer>
 
