@@ -377,6 +377,12 @@ footer {
         gap: 1rem;
     }
     
+    .logo-img {
+        height: auto;
+        width: 75%; /* 3/4 of container width */
+        max-width: none; /* Remove max-width restriction */
+    }
+    
     .nav-links {
         gap: 0.5rem;
     }
@@ -446,6 +452,12 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
         padding: 0.5rem 10px;
+    }
+    
+    .logo-img {
+        height: auto;
+        width: 75vw; /* 3/4 of viewport width for very small screens */
+        max-width: none;
     }
     
     .nav-links {
