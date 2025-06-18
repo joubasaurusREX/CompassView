@@ -45,71 +45,17 @@ function createFallbackMap(container) {
     `;
 }
 
-// Initialize everything when DOM is loaded
+// Initialize everything when DOM is loaded - SINGLE EVENT LISTENER
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing map...');
+    console.log('DOM loaded, initializing...');
     
-    // Check if map container exists
+    // Initialize map
     const mapContainer = document.getElementById('map');
     if (mapContainer) {
         console.log('Map container found, creating fallback map...');
         createFallbackMap(mapContainer);
     } else {
         console.error('Map container not found!');
-    }
-
-    // Optimize images for mobile
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-        });
-    });
-});
-
-// Initialize map when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if map container exists
-    const mapContainer = document.getElementById('map');
-    if (mapContainer) {
-        // Initialize Mapbox map - Nieu-Bethesda coordinates
-        const map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v12',
-            center: [25.0295, -32.0808], // Nieu-Bethesda coordinates [longitude, latitude]
-            zoom: 14
-        });
-
-        // Add navigation controls
-        map.addControl(new mapboxgl.NavigationControl());
-
-        // Add a marker for CompassView location
-        const marker = new mapboxgl.Marker({
-            color: '#879eab'
-        })
-        .setLngLat([25.0295, -32.0808]) // Nieu-Bethesda coordinates
-        .addTo(map);
-
-        // Add popup with address information
-        const popup = new mapboxgl.Popup({
-            closeOnClick: false,
-            closeButton: false
-        })
-        .setLngLat([25.0295, -32.0808])
-        .setHTML(`
-            <div>
-                <h3>CompassView Guesthouse</h3>
-                <p><strong>Address:</strong><br>
-                4 New Street<br>
-                Nieu-Bethesda, 6286<br>
-                South Africa</p>
-                <p><strong>Phone:</strong> +27 083 657 5425</p>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=4+New+Street,+Nieu-Bethesda,+6286,+South+Africa" target="_blank" style="color: #879eab; text-decoration: none;">
-                    Get Directions →
-                </a>
-            </div>
-        `)
-        .addTo(map);
     }
 
     // Optimize images for mobile
