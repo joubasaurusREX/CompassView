@@ -45,10 +45,38 @@ function createFallbackMap(container) {
     `;
 }
 
+// Populate the gallery from images/gallery.json, which lists whatever
+// image files currently live in images/ (see images/.galleryignore and
+// .github/workflows/update-gallery.yml). Drop a new photo into images/
+// and push - the manifest regenerates itself and it shows up here.
+async function loadGallery(container) {
+    let files;
+    try {
+        const response = await fetch('images/gallery.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        files = await response.json();
+    } catch (err) {
+        console.error('Could not load gallery manifest:', err);
+        container.innerHTML = '<p class="gallery-status">Gallery photos could not be loaded.</p>';
+        return;
+    }
+
+    if (!Array.isArray(files) || files.length === 0) {
+        container.innerHTML = '<p class="gallery-status">No gallery photos yet.</p>';
+        return;
+    }
+
+    container.innerHTML = files.map((file, index) => `
+        <div class="gallery-item">
+            <img src="images/${encodeURIComponent(file)}" alt="CompassView Guesthouse - Photo ${index + 1}" loading="lazy">
+        </div>
+    `).join('');
+}
+
 // Initialize everything when DOM is loaded - SINGLE EVENT LISTENER
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...');
-    
+
     // Initialize map
     const mapContainer = document.getElementById('map');
     if (mapContainer) {
@@ -56,6 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
         createFallbackMap(mapContainer);
     } else {
         console.error('Map container not found!');
+    }
+
+    // Populate the photo gallery
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (galleryGrid) {
+        loadGallery(galleryGrid);
     }
 
     // Optimize images for mobile

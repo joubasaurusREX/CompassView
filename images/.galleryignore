@@ -1,0 +1,6 @@
+# Filenames listed here (one per line) are excluded when the gallery
+# manifest (images/gallery.json) is auto-generated from this folder.
+# Use this for images that live in images/ but aren't gallery photos,
+# e.g. the site logo or hero background.
+Screenshot 2025-06-16 114142.png
+Screenshot 2025-06-16 121318.png

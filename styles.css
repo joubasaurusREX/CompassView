@@ -183,6 +183,13 @@ nav {
     transform: scale(1.05);
 }
 
+.gallery-status {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: white;
+    opacity: 0.85;
+}
+
 /* Location Section */
 .location {
     padding: 3rem 0;

@@ -1,0 +1,63 @@
+name: Update gallery manifest
+
+# Regenerates images/gallery.json from whatever image files are actually
+# sitting in images/ (minus anything listed in images/.galleryignore), so
+# dropping a new photo into images/ and pushing is enough to make it show
+# up on the site - no HTML editing required.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "images/**"
+      - ".github/workflows/update-gallery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate images/gallery.json
+        run: |
+          python3 - <<'EOF'
+          import json, os
+
+          os.chdir("images")
+
+          ignore = set()
+          if os.path.exists(".galleryignore"):
+              with open(".galleryignore") as f:
+                  for line in f:
+                      line = line.strip()
+                      if line and not line.startswith("#"):
+                          ignore.add(line)
+
+          exts = (".jpg", ".jpeg", ".png", ".gif", ".webp")
+          files = sorted(
+              f for f in os.listdir(".")
+              if f not in ignore and f.lower().endswith(exts)
+          )
+
+          with open("gallery.json", "w") as f:
+              json.dump(files, f, indent=2)
+              f.write("\n")
+
+          print(f"gallery.json: {len(files)} images")
+          EOF
+
+      - name: Commit manifest if it changed
+        run: |
+          if git diff --quiet -- images/gallery.json; then
+            echo "No changes to images/gallery.json"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/gallery.json
+          git commit -m "Update gallery manifest"
+          git push
